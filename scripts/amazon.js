@@ -75,10 +75,18 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     // check if matchItem is true (not empty), then increase the quantity is true or push new item to the cart
     if (matchingItem) {
       matchingItem.quantity += 1;
-      console.log(cart);
     } else {
       cart.push({ productId, quantity: 1 });
-      console.log(cart);
     }
+
+    //add total number of items to cartWuantity variable
+    let cartQuantity = 0;
+
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    });
+
+    //render cartQuantity to the page
+    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
   });
 });
