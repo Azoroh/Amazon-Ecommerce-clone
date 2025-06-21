@@ -1,5 +1,5 @@
 //to avoid naming conflicts with javascript modules. we can simply rename imported modules. e.g: {cart as myCart}
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 let productsHTML = "";
@@ -61,6 +61,18 @@ products.forEach((product) => {
 //render to page
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+function updateCartQuantity() {
+  //add total number of items to cartquantity variable
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  //render cartQuantity to the page
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+}
+
 //loop through the products add to cart buttons
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   //clicking the add to cart button adds the particular product to the cart
@@ -87,35 +99,9 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     const { productId } = button.dataset;
     console.log(productId);
 
-    let selectedQuantity = Number(
-      document.querySelector(`.js-quantity-selector-${productId}`).value
-    );
+    addToCart(productId);
 
-    let matchingItem;
-
-    //loop through the cart, if item match assign it to matchingItem variable
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item;
-      }
-    });
-
-    // check if matchItem is true (not empty), then increase the quantity is true or push new item to the cart
-    if (matchingItem) {
-      matchingItem.quantity += selectedQuantity;
-    } else {
-      cart.push({ productId, quantity: selectedQuantity });
-    }
-
-    //add total number of items to cartWuantity variable
-    let cartQuantity = 0;
-
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-
-    //render cartQuantity to the page
-    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+    updateCartQuantity();
   });
 });
 
