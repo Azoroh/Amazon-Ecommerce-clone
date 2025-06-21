@@ -1,5 +1,6 @@
 //to avoid naming conflicts with javascript modules. we can simply rename imported modules. e.g: {cart as myCart}
 import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let productsHTML = "";
 
