@@ -61,8 +61,28 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   //clicking the add to cart button adds the particular product to the cart
   button.addEventListener("click", () => {
+    
+    const productContainer = button.closest(".product-container");
+    const addedToCartDiv = productContainer.querySelector(".added-to-cart");
+
+    let timeOutId;
+    let addedAlert;
+
+    if (!addedAlert) {
+      addedToCartDiv.classList.add("js-added");
+      addedAlert = true;
+    }
+    clearTimeout(timeOutId);
+
+    timeOutId = setTimeout(() => {
+      if (addedAlert) {
+        addedToCartDiv.classList.remove("js-added");
+      }
+    }, 2000);
+
     //grab each items product id from the dataset in the generated html
-    const productId = button.dataset.productId;
+    const { productId } = button.dataset;
+    console.log(productId);
 
     let selectedQuantity = Number(
       document.querySelector(`.js-quantity-selector-${productId}`).value
@@ -93,8 +113,6 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     //render cartQuantity to the page
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
-
-    // console.log(document.querySelector(".js-quantity-selector-${productId}"));
   });
 });
 

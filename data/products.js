@@ -469,4 +469,38 @@ const products = [
     priceCents: 2400,
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg",
+    name: "Men's Full-sized Backpack",
+    rating: {
+      stars: 4.5,
+      count: 315,
+    },
+    priceCents: 4300,
+    keywords: ["sweaters", "hoodies", "apparel", "mens"],
+  },
+  {
+    id: "id2",
+    image: "images/products/umbrella.jpg",
+    name: "Foldable Umbrella",
+    rating: {
+      stars: 3,
+      count: 1540,
+    },
+    priceCents: 1099,
+    keywords: ["rain", "outdoors", "summer", "beach"],
+  },
+  {
+    id: "id3",
+    image:
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D",
+    name: "Stainless Steel Water Bottle",
+    rating: {
+      stars: 4,
+      count: 317,
+    },
+    priceCents: 3400,
+    keywords: ["bottle", "shaker", "sports", "flask"],
+  },
 ];
