@@ -1,3 +1,6 @@
+//to avoid naming conflicts with javascript modules. we can simply rename imported modules. e.g: {cart as myCart}
+import { cart } from "../data/cart.js";
+
 let productsHTML = "";
 
 products.forEach((product) => {
@@ -61,7 +64,6 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   //clicking the add to cart button adds the particular product to the cart
   button.addEventListener("click", () => {
-    
     const productContainer = button.closest(".product-container");
     const addedToCartDiv = productContainer.querySelector(".added-to-cart");
 
