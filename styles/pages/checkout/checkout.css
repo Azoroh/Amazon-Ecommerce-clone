@@ -22,6 +22,30 @@
   display: none;
 }
 
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.quantity-input.is-invalid {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  border: 1px solid rgb(200, 0, 0);
+  box-shadow: 0 0 5px rgba(200, 0, 0, 0.5);
+}
+
 .is-editing-quantity .quantity-input,
 .is-editing-quantity .save-link {
   display: initial;
