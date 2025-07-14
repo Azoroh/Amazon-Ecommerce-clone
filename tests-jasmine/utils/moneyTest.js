@@ -1,4 +1,4 @@
-import { formatCurrency } from "../scripts/utils/money.js";
+import { formatCurrency } from "../../scripts/utils/money.js";
 
 //How to create a test suite in jasmine
 describe("test suite: formatCurrency", () => {
