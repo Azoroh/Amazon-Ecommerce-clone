@@ -1,9 +1,9 @@
 import {
   cart,
   calculateCartQuantity,
-  updateQuantity,
   removeFromCart,
   updateDeliveryOption,
+  saveToStorage
 } from "../../data/cart.js";
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
@@ -198,4 +198,18 @@ export function renderOrderSummary() {
       }
     });
   });
+}
+
+function updateQuantity(productId, newQuantity) {
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (cartItem.productId === productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
 }

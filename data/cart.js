@@ -21,19 +21,19 @@ export function loadFromStorage() {
   }
 }
 
-export function updateQuantity(productId, newQuantity) {
-  let matchingItem;
+// export function updateQuantity(productId, newQuantity) {
+//   let matchingItem;
 
-  cart.forEach((cartItem) => {
-    if (cartItem.productId === productId) {
-      matchingItem = cartItem;
-    }
-  });
+//   cart.forEach((cartItem) => {
+//     if (cartItem.productId === productId) {
+//       matchingItem = cartItem;
+//     }
+//   });
 
-  matchingItem.quantity = newQuantity;
+//   matchingItem.quantity = newQuantity;
 
-  saveToStorage();
-}
+//   saveToStorage();
+// }
 
 export function calculateCartQuantity() {
   //add total number of items to cartquantity variable
@@ -84,7 +84,7 @@ export function removeFromCart(productId) {
   saveToStorage();
 }
 
-function saveToStorage() {
+export function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 

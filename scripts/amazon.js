@@ -7,6 +7,17 @@ let productsHTML = "";
 
 updateCartQuantity();
 
+// function calculateCartQuantity() {
+//   //add total number of items to cartquantity variable
+//   let cartQuantity = 0;
+
+//   cart.cartItems.forEach((cartItem) => {
+//     cartQuantity += cartItem.quantity;
+//   });
+//   //render cartQuantity to the page
+//   document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+// }
+
 products.forEach((product) => {
   productsHTML += `
     <div class="product-container">
