@@ -2,7 +2,7 @@ import { addToCart, cart, loadFromStorage } from "../../data/cart.js";
 import { deliveryOptions } from "../../data/deliveryOptions.js";
 import { products } from "../../data/products.js";
 
-desribe("Test suite: addToCatt", function () {
+describe("Test suite: addToCart", function () {
   it("adds an existing product to the cart", function () {
     spyOn(localStorage, "setItem");
 
