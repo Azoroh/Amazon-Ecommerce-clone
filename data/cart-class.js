@@ -89,14 +89,21 @@ class Cart {
 
     this.saveToStorage();
   }
+
+  calculateCartQuantity() {
+    //add total number of items to cartquantity variable
+    let cartQuantity = 0;
+
+    this.cartItems.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+    //render cartQuantity to the page
+    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  }
 }
 
-const cart = new Cart("cart-oop");
+export const cart = new Cart("cart-oop");
 const businessCart = new Cart("cart-business");
 
-// cart.addToCart('82bb68d7-ebc9-476a-989c-c78a40ee5cd9')
-// businessCart.removeFromCart('82bb68d7-ebc9-476a-989c-c78a40ee5cd9')
-
 console.log(cart);
-console.log(businessCart);
-console.log(businessCart instanceof Cart);
+// console.log(businessCart);

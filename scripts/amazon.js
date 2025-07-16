@@ -1,22 +1,11 @@
 //to avoid naming conflicts with javascript modules. we can simply rename imported modules. e.g: {cart as myCart}
-import { cart, addToCart, calculateCartQuantity } from "../data/cart.js";
+import { cart } from "../data/cart-class.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
 let productsHTML = "";
 
 updateCartQuantity();
-
-// function calculateCartQuantity() {
-//   //add total number of items to cartquantity variable
-//   let cartQuantity = 0;
-
-//   cart.cartItems.forEach((cartItem) => {
-//     cartQuantity += cartItem.quantity;
-//   });
-//   //render cartQuantity to the page
-//   document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
-// }
 
 products.forEach((product) => {
   productsHTML += `
@@ -76,7 +65,7 @@ products.forEach((product) => {
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
 function updateCartQuantity() {
-  calculateCartQuantity();
+  cart.calculateCartQuantity();
 }
 
 //loop through the products add to cart buttons
@@ -103,9 +92,8 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     //grab each items product id from the dataset in the generated html
     const { productId } = button.dataset;
-    console.log(productId);
 
-    addToCart(productId);
+    cart.addToCart(productId);
 
     updateCartQuantity();
   });
