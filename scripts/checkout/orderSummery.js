@@ -2,7 +2,6 @@ import { cart } from "../../data/cart-class.js";
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { calculateDeliveryDate } from "../../data/deliveryOptions.js";
-// import { cart } from "";
 
 import {
   deliveryOptions,
