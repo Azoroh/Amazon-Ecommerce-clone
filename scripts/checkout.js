@@ -1,6 +1,7 @@
 import { renderOrderSummary } from "./checkout/orderSummery.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
+import "../data/back-end-practice.js";
 
 renderCheckoutHeader();
 renderOrderSummary();
