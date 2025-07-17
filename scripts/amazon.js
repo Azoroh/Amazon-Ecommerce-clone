@@ -1,14 +1,19 @@
 //to avoid naming conflicts with javascript modules. we can simply rename imported modules. e.g: {cart as myCart}
 import { cart } from "../data/cart-class.js";
-import { products } from "../data/products.js";
+import { loadProducts, products } from "../data/products.js";
 // import { formatCurrency } from "./utils/money.js";
+
+loadProducts(renderProductsGrid);
 
 let productsHTML = "";
 
-updateCartQuantity();
+// updateCartQuantity();
 
-products.forEach((product) => {
-  productsHTML += `
+function renderProductsGrid() {
+  updateCartQuantity();
+
+  products.forEach((product) => {
+    productsHTML += `
     <div class="product-container">
         <div class="product-image-container">
           <img class="product-image" src="${product.image}">
@@ -60,44 +65,45 @@ products.forEach((product) => {
         </button>
     </div>
   `;
-});
-
-//render to page
-document.querySelector(".js-products-grid").innerHTML = productsHTML;
-
-function updateCartQuantity() {
-  cart.calculateCartQuantity();
-}
-
-//loop through the products add to cart buttons
-document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-  //clicking the add to cart button adds the particular product to the cart
-  button.addEventListener("click", () => {
-    const productContainer = button.closest(".product-container");
-    const addedToCartDiv = productContainer.querySelector(".added-to-cart");
-
-    let timeOutId;
-    let addedAlert;
-
-    if (!addedAlert) {
-      addedToCartDiv.classList.add("js-added");
-      addedAlert = true;
-    }
-    clearTimeout(timeOutId);
-
-    timeOutId = setTimeout(() => {
-      if (addedAlert) {
-        addedToCartDiv.classList.remove("js-added");
-      }
-    }, 2000);
-
-    //grab each items product id from the dataset in the generated html
-    const { productId } = button.dataset;
-
-    cart.addToCart(productId);
-
-    updateCartQuantity();
   });
-});
+
+  //render to page
+  document.querySelector(".js-products-grid").innerHTML = productsHTML;
+
+  function updateCartQuantity() {
+    cart.calculateCartQuantity();
+  }
+
+  //loop through the products add to cart buttons
+  document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+    //clicking the add to cart button adds the particular product to the cart
+    button.addEventListener("click", () => {
+      const productContainer = button.closest(".product-container");
+      const addedToCartDiv = productContainer.querySelector(".added-to-cart");
+
+      let timeOutId;
+      let addedAlert;
+
+      if (!addedAlert) {
+        addedToCartDiv.classList.add("js-added");
+        addedAlert = true;
+      }
+      clearTimeout(timeOutId);
+
+      timeOutId = setTimeout(() => {
+        if (addedAlert) {
+          addedToCartDiv.classList.remove("js-added");
+        }
+      }, 2000);
+
+      //grab each items product id from the dataset in the generated html
+      const { productId } = button.dataset;
+
+      cart.addToCart(productId);
+
+      updateCartQuantity();
+    });
+  });
+}
 
 // console.log(document.querySelector(".js-quantity-selector-${product.id}"));
