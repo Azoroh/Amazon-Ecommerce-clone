@@ -52,6 +52,23 @@ class Clothing extends Product {
     return `<a href= "${this.sizeChartLink}" target="_blank">Size chart</a>`;
   }
 }
+
+class Appliance extends Product {
+  instructionsLink;
+  warrantyLink;
+  constructor(productDetails) {
+    super(productDetails);
+    this.instructionsLink = productDetails.instructionsLink;
+    this.warrantyLink = productDetails.warrantyLink;
+  }
+  extraInfoHTML() {
+    return `
+      <a href="${this.instructionsLink}" target="_blank">Instructions</a>
+      <a href="${this.warrantyLink}" target="_blank">Warranty</a>
+    `;
+  }
+}
+
 /*
 const date = new Date();
 console.log(date);
@@ -81,22 +98,6 @@ const object3 = {
   },
 };
 */
-
-class Appliance extends Product {
-  instructionsLink;
-  warrantyLink;
-  constructor(productDetails) {
-    super(productDetails);
-    this.instructionsLink = productDetails.instructionsLink;
-    this.warrantyLink = productDetails.warrantyLink;
-  }
-  extraInfoHTML() {
-    return `
-      <a href="${this.instructionsLink}" target="_blank">Instructions</a>
-      <a href="${this.warrantyLink}" target="_blank">Warranty</a>
-    `;
-  }
-}
 
 export let products = [];
 
