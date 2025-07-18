@@ -21,6 +21,35 @@ import { loadCart } from "../data/cart.js";
 // let newArray = [... array.map(num => num * 2)]
 // console.log(newArray);
 
+//ASYNC
+async function loadPage() {
+  // await loadProductsFetch();
+
+  // await new Promise((resolve) => {
+  //   loadCart(() => {
+  //     resolve();
+  //   });
+  // });
+
+  await Promise.all([
+    loadProductsFetch(),
+
+    new Promise((resolve) => {
+      loadCart(() => {
+        resolve();
+      });
+    }),
+  ]);
+
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+//PROMISE.ALL
+/*
 Promise.all([
   loadProductsFetch(),
 
@@ -36,6 +65,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
 
 // new Promise((resolve) => {
 //   loadProducts(() => {
