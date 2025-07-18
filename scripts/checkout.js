@@ -1,7 +1,7 @@
 import { renderOrderSummary } from "./checkout/orderSummery.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
-import { loadProducts } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 // import "../data/back-end-practice.js";
 
@@ -17,13 +17,12 @@ import { loadCart } from "../data/cart.js";
 // }).then(() => {
 //   console.log("next step");
 // });
+// let array = [1,2,3,4,5,6,7,8,9]
+// let newArray = [... array.map(num => num * 2)]
+// console.log(newArray);
 
 Promise.all([
-  new Promise((resolve) => {
-    loadProducts(() => {
-      resolve("hey you!");
-    });
-  }),
+  loadProductsFetch(),
 
   new Promise((resolve) => {
     loadCart(() => {
