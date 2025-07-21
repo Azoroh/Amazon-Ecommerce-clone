@@ -2,8 +2,23 @@ import { getProduct, loadProductsFetch } from "../data/products.js";
 import { orders } from "../data/ordrs.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 
+const url = new URL(window.location.href);
+// console.log(url.searchParams.get("orderId"));
+// console.log(url.searchParams.get("productId"));
+
+
 async function renderTrackingPage() {
   await loadProductsFetch();
+
+  
+
+  const product = getProduct(url.searchParams.get("productId"));
+  const order = orders.find((order) => order.id === url.searchParams.get("orderId"));
+  const deliveryDate = dayjs(order.estimatedDeliveryTime).format("dddd, MMMM D");
+  
+  console.log(product);
+  console.log(order);
+  
 
   const trackingPageHTML = `
       <a class="back-to-orders-link link-primary" href="orders.html">
@@ -11,7 +26,7 @@ async function renderTrackingPage() {
       </a>
 
       <div class="delivery-date">
-        Arriving on Monday, June 13
+        Arriving on ${deliveryDate}
       </div>
 
       <div class="product-info">

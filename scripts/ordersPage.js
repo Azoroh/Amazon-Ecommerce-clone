@@ -75,7 +75,7 @@ export function renderOrderPage() {
           </div>
 
           <div class="product-actions">
-            <a href="tracking.html?orderId=${order.id}&productId=${product.id}" data-it='${product.id}'>
+            <a href="tracking.html?orderId=${order.id}&productId=${product.id}">
               <button class="track-package-button button-secondary">
                 Track package
               </button>
@@ -91,6 +91,4 @@ export function renderOrderPage() {
     `;
   });
   document.querySelector(".js-order-grid").innerHTML = orderPageHTML;
-
-  
 }
