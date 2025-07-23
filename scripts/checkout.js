@@ -2,7 +2,8 @@ import { renderOrderSummary } from "./checkout/orderSummery.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
-import { loadCart } from "../data/cart.js";
+import { loadCartFetch } from "../data/cart.js";
+
 // import "../data/back-end-practice.js";
 
 // JAVASCRIPT PROMISES
@@ -22,20 +23,22 @@ import { loadCart } from "../data/cart.js";
 // console.log(newArray);
 
 //ASYNC
+
 async function loadPage() {
   try {
     // throw "error 1";
+    await Promise.all([loadProductsFetch(), loadCartFetch()]);
 
-    await loadProductsFetch();
+    // await loadProductsFetch();
 
-    await new Promise((resolve, reject) => {
-      // throw 'error2'
-      loadCart(() => {
-        // reject("error3");
+    // await new Promise((resolve, reject) => {
+    //   // throw 'error2'
+    //   loadCartFetch(() => {
+    //     // reject("error3");
 
-        resolve();
-      });
-    });
+    //     resolve();
+    //   });
+    // });
   } catch (error) {
     console.log("unexpected error from checkout. please try again later");
   }

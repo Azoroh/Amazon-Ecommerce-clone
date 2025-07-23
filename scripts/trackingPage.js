@@ -7,6 +7,10 @@ const url = new URL(window.location.href);
 // console.log(url.searchParams.get("productId"));
 
 
+
+
+
+
 async function renderTrackingPage() {
   await loadProductsFetch();
 
